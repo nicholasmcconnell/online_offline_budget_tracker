@@ -1,11 +1,12 @@
 const FILES_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/db.js',
-    '/index.js',
-    '/style.css',
-    '/icons/icon-192x192.png',
-    '/icons/icon-512x512.png'
+    "/",
+    "/index.html",
+    "/styles.css",
+    "/manifest.webmanifest",
+    "/index.js",
+    "/db.js",
+    "/icons/icon-192x192.png",
+    "/icons/icon-512x512.png"
   ];
   
   const CACHE_NAME = "static-cache-v2";
@@ -45,21 +46,24 @@ const FILES_TO_CACHE = [
   self.addEventListener("fetch", function(evt) {
     if (evt.request.url.includes("/api/")) {
       evt.respondWith(
-        caches.open(DATA_CACHE_NAME).then(cache => {
-          return fetch(evt.request)
-            .then(response => {
-              // If the response was good, clone it and store it in the cache.
-              if (response.status === 200) {
-                cache.put(evt.request.url, response.clone());
-              }
+        caches
+          .open(DATA_CACHE_NAME)
+          .then(cache => {
+            return fetch(evt.request)
+              .then(response => {
+                // If the response was good, clone it and store it in the cache.
+                if (response.status === 200) {
+                  cache.put(evt.request.url, response.clone());
+                }
   
-              return response;
-            })
-            .catch(err => {
-              // Network request failed, try to get it from the cache.
-              return cache.match(evt.request);
-            });
-        }).catch(err => console.log(err))
+                return response;
+              })
+              .catch(err => {
+                // Network request failed, try to get it from the cache.
+                return cache.match(evt.request);
+              });
+          })
+          .catch(err => console.log(err))
       );
   
       return;
@@ -73,4 +77,3 @@ const FILES_TO_CACHE = [
       })
     );
   });
-  
