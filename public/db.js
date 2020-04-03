@@ -1,6 +1,4 @@
-let db,
-tx,
-store;
+let db;
 
 const request = indexedDB.open("budget", 1);
 
@@ -58,4 +56,4 @@ function checkDatabase() {
 // listen for app coming back online
 window.addEventListener("online", checkDatabase);
 
-module.exports = saveRecord;
+// export default saveRecord;
