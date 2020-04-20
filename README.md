@@ -23,7 +23,7 @@ A PWA Budget Tracker application to allow for offline access and functionality. 
 
 ## Landing Page
 
-![homepage](public/img/budget.png "homepage")
+![homepage](public/images/budget.png "homepage")
 
 ## Tech used
 
