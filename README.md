@@ -19,8 +19,6 @@ A PWA Budget Tracker application to allow for offline access and functionality. 
 - When brought back online:
   - Offline entries are added to tracker.
 
-## Demonstration
-
 ## Landing Page
 
 ![homepage](public/images/budget.png "homepage")
